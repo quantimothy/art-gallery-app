@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Heart, Share2, Edit, Trash2 } from 'lucide-react';
+import { ArrowLeft, Edit, Trash2 } from 'lucide-react';
 import { useGallery } from '../context/GalleryContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -132,4 +132,22 @@ const ArtworkDetailPage: React.FC = () => {
                   ? isLiked 
                     ? 'bg-red-100 text-red-600' 
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200' 
-                  : 'bg-gray-100 text-gra
+                  : 'bg-gray-100 text-gray-700'
+              }`}
+            >
+              {isAuthenticated ? (isLiked ? 'Unlike' : 'Like') : 'Login to Like'}
+            </button>
+            <button 
+              onClick={handleShare}
+              className="flex items-center px-4 py-2 rounded-md bg-gray-100 text-gray-700 hover:bg-gray-200"
+            >
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ArtworkDetailPage;

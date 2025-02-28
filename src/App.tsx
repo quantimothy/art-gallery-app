@@ -1,10 +1,23 @@
 import React from 'react';
-import HomePage from './pages/HomePage';
+import { BrowserRouter, useRoutes } from 'react-router-dom';
+import { GalleryProvider } from './context/GalleryContext';
+import { AuthProvider } from './context/AuthContext';
+import { routes } from './routes';
+
+const AppRoutes: React.FC = () => {
+  const element = useRoutes(routes);
+  return element;
+};
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <AuthProvider>
+        <GalleryProvider>
+          <AppRoutes />
+        </GalleryProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
