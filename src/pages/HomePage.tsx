@@ -3,6 +3,7 @@ import { useGallery } from '../context/GalleryContext';
 import ArtworkCard from '../components/ArtworkCard';
 import SearchBar from '../components/SearchBar';
 import TagFilter from '../components/TagFilter';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
   const { filteredArtworks, galleries } = useGallery();
@@ -43,13 +44,13 @@ const HomePage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleries.slice(0, 3).map(gallery => (
             <div key={gallery.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <a href={`/gallery/${gallery.id}`} className="block">
+              <Link to={`/gallery/${gallery.id}`} className="block">
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{gallery.title}</h3>
                   <p className="text-gray-600 mb-4">{gallery.description}</p>
                   <span className="text-indigo-600 font-medium">View Gallery →</span>
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
         </div>

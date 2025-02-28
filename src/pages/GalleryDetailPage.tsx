@@ -11,7 +11,7 @@ const GalleryDetailPage: React.FC = () => {
   const gallery = galleries.find(g => g.id === id);
   
   useEffect(() => {
-    if (gallery) {
+    if (gallery?.tag) {
       setActiveTag(gallery.tag);
     }
     
@@ -19,7 +19,7 @@ const GalleryDetailPage: React.FC = () => {
       // Clear the filter when leaving the page
       setActiveTag(null);
     };
-  }, [gallery, setActiveTag]);
+  }, [gallery?.tag]);
   
   if (!gallery) {
     return (
